@@ -36,7 +36,7 @@ session_start();
             }
             else{
                 $_SESSION['message'] = "File empty";
-                header('location: index.php');
+                header('location: Currencies.php');
             }
      
         }
