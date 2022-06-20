@@ -26,22 +26,22 @@ session_start();
                     }
                     else{
                         $_SESSION['message'] = "File contains empty data";
-                        header('location: index.php');
+                        header('location: Currencies.php');
                     }
                 }
                 else{
                     $_SESSION['message'] = "Please upload CSV files only";
-                    header('location: index.php');
+                    header('location: Currencies.php');
                 }
             }
             else{
                 $_SESSION['message'] = "File empty";
-                header('location: index.php');
+                header('location: Currencies.php');
             }
      
         }
      
         else{
             $_SESSION['message'] = "Please import a file first";
-            header('location: index.php');
+            header('location: Currencies.php');
         }
