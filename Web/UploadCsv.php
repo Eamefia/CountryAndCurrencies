@@ -18,7 +18,7 @@ include("../RestApi/Api.php");
 
                         fgets($file);
                          $insert_file->insert_country($file);
-                         header('location: Currencies.php');
+                         
      
                     }
                     else{

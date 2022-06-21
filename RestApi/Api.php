@@ -88,7 +88,7 @@ class API
     function insert_currency($file)
     {
         while(($impData = fgetcsv($file, 1000, ',')) !== FALSE){
-            $query = "INSERT INTO currencies (Iso_code, Iso_numeric_code, Common_name, Official_name, Symbols)
+            $query = "INSERT INTO currencies (Iso_code, Iso_numeric_code, Common_name, Currency_Official_name, Symbols)
             VALUES ('".$impData[0]."', '".$impData[1]."', '".$impData[2]."', '".$impData[3]."', '".$impData[4]."')";
             $statement = $this->connect->prepare($query);
 
@@ -99,21 +99,23 @@ class API
                 $_SESSION['message'] = "Cannot import data. Something went wrong";
             }
         }
+        header('location: ../Web/viewData.php');
     }
 	
 	function insert_country($file)
     {
         while(($impData = fgetcsv($file, 1000, ',')) !== FALSE){
-            $sql = "INSERT INTO items (Continent, Currency_code, Iso2_code, Iso3_code, Iso_numerals, Fibs_code, Calling_code, Common_name, Official_name, Endonym, Demonym) 
+            $query = "INSERT INTO items (Continent, Currency_code, Iso2_code, Iso3_code, Iso_numerals, Fibs_code, Calling_code, Common_name, Official_name, Endonym, Demonym) 
             VALUES ('".$impData[0]."', '".$impData[1]."', '".$impData[2]."', '".$impData[3]."', '".$impData[4]."', '".$impData[5]."', '".$impData[6]."', '".$impData[7]."', '".$impData[8]."', '".$impData[9]."', '".$impData[10]."')";
-            $query = $conn->query($sql);
+            $statement = $this->connect->prepare($query);
      
-            if($query){
+            if($statement->execute()){
                 $_SESSION['message'] = "Data imported successfully";
             }
             else{
                 $_SESSION['message'] = "Cannot import data. Something went wrong";
             }
         }
+        header('location: ../Web/Currencies.php');
     }
 }

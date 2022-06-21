@@ -22,7 +22,6 @@ session_start();
                         
                         // call insert_currency fuction
                         $insert_file->insert_currency($file);
-                        header('location: viewData.php');
                     }
                     else{
                         $_SESSION['message'] = "File contains empty data";
